@@ -87,3 +87,5 @@ def stats(nums):
 nums = [88, 92, 75, 60, 100, 43, 67, 91]
 __min,__max,__avg=stats(nums)
 print(__min,__max,__avg)
+
+#test git diff
