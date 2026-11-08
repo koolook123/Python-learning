@@ -46,7 +46,7 @@ while True:
     try:
         num=int(input("请输入数字："))
         break
-    except ValueError():
+    except ValueError:
         print("重输")
 
 
@@ -56,21 +56,21 @@ def safe_read(path):
         with open(path,encoding="utf-8") as f:
             return f.read()
 
-    except FileNotFoundError():
+    except FileNotFoundError:
         print("文件不存在")
         return None
 
-    except Exception():
-        print(f"{Exception}")
+    except Exception as e:
+        print(f"{e}")
         raise
 
 
 #C
 def score_check(score):
     try:
-        if 0>score>100:
+        if 0<score<100:
             return score
-    except ValueError():
+    except ValueError:
         raise ValueError(f"分数必须在 0-100 之间，收到：{score}")
-    except Exception():
+    except Exception:
         print("ScoreError(其他错误)")

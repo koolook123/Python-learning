@@ -51,4 +51,43 @@ scores = [
     ("孙八", 100),
 ]
 
-with open("socres.txt","")
+with open("scores-11.txt","w",encoding="utf-8") as f:
+    for name,score in scores:
+        f.write(f"{name},{score}\n")
+
+
+#B
+total=0
+count=0
+
+with open("scores-11.txt",encoding="utf-8") as f:
+    for line in f:
+        name,score=line.strip().split(",")
+        total+=int(score)
+        count+=1
+    print(total/count)
+
+
+#C
+import csv
+
+rows=[]
+
+with open("scores-11.txt",encoding="utf-8") as f:
+    for line in f:
+        name,score=line.strip().split(",")
+        rows.append([name,int(score)])
+
+with open("scores-11.csv","w",newline="",encoding="utf-8") as f:
+    w=csv.writer(f)
+    w.writerow(["name","socre"])
+    w.writerows(rows)
+
+with open("scores-11.csv",newline="",encoding="utf-8") as f:
+    data=list(csv.reader(f))
+
+body=data[1:]
+body.sort(key=lambda r: int(r[1]),reverse=True)
+
+for name, score in body:
+    print(f"{name}  {score}")
